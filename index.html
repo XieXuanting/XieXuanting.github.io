@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Xuanting Xie (谢宣霆), Ph.D. candidate at UESTC. Research in graph representation learning, graph clustering, spectral filtering, graph foundation models, and large language models.">
+  <meta name="author" content="Xuanting Xie">
+  <title>Xuanting Xie · 谢宣霆 | UESTC</title>
+  <!--
+    谢宣霆的单文件学术主页，2026-09。
+    HTML、CSS 均包含在本文件中，无需安装依赖，双击即可打开。
+    修改内容：直接搜索姓名、论文标题、邮箱或奖项名称。
+    个人照片：可把 .portrait 中的 XX 换成 <img src="你的照片路径" alt="Xuanting Xie">。
+    目前采用文字头像；没有外部字体、图片、统计脚本或运行时依赖。
+    论文署名和期刊信息优先沿用本人提供的最新版本；预印本的作者或年份可能不同。
+    页面结构参考 https://xingtongyu.netlify.app/；本页代码与文案独立编写。
+  -->
+  <style>
+    :root {
+      --ink: #1c2a40;
+      --muted: #56647a;
+      --blue: #2455a2;
+      --navy: #18365e;
+      --line: #e0e6ef;
+      --wash: #f4f7fc;
+      --gold: #835a12;
+      --gold-wash: #fff6df;
+      --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --serif: Georgia, "Times New Roman", "Noto Serif SC", serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: var(--body); font-size: 1rem; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+    a { color: var(--blue); text-decoration: none; text-underline-offset: .2em; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 3px solid #9ab8ed; outline-offset: 5px; border-radius: 2px; }
+    h1, h2, h3, p { margin-top: 0; }
+    p { margin-bottom: 1.15rem; }
+    h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.035em; line-height: 1.18; }
+    h1 { font-size: clamp(2.15rem, 4vw, 2.85rem); margin-bottom: 1.45rem; }
+    h2 { font-size: 2.05rem; margin-bottom: 0; }
+    h3 { font-size: 1.1rem; line-height: 1.5; }
+    strong { font-weight: 650; }
+    sup { font-size: .72em; line-height: 0; }
+    .wrap { width: min(1120px, calc(100% - 5rem)); margin-inline: auto; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; padding: .65rem 1rem; background: var(--navy); color: #fff; z-index: 20; }
+    .skip-link:focus { top: 1rem; }
+    .site-header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--line); }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; min-height: 76px; gap: 2rem; }
+    .wordmark { font-weight: 700; color: var(--ink); font-size: 1.05rem; letter-spacing: -.025em; white-space: nowrap; }
+    .wordmark span { color: var(--muted); font-weight: 400; margin-left: .65rem; font-size: .875rem; }
+    .site-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 1.6rem; }
+    .site-nav a { font-size: .9rem; color: var(--muted); padding-block: .3rem; }
+    .site-nav a:hover { color: var(--blue); }
+    .hero { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 5.1rem; padding-block: 4.5rem 4rem; align-items: start; }
+    .profile { text-align: center; padding-top: .2rem; }
+    .portrait { display: grid; place-items: center; width: 164px; height: 164px; margin: 0 auto 1.45rem; border-radius: 50%; background: var(--navy); color: white; font-family: var(--serif); font-size: 3.6rem; letter-spacing: -.09em; padding-right: .08em; overflow: hidden; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-name { margin-bottom: .05rem; font-family: var(--body); font-size: 1.7rem; line-height: 1.3; font-weight: 650; letter-spacing: -.04em; }
+    .name-cn { font-size: 1.1rem; letter-spacing: .22em; margin: .4rem 0 .95rem; padding-left: .22em; }
+    .role { margin-bottom: .2rem; font-size: 1rem; }
+    .affiliation { display: block; font-size: .95rem; line-height: 1.65; }
+    .location { margin: .85rem 0 1rem; color: var(--muted); font-size: .875rem; }
+    .profile-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .95rem; font-size: .9rem; }
+    .bio { font-size: 1.075rem; line-height: 1.85; }
+    .bio p:last-child { margin-bottom: 0; }
+    .focus-line { display: block; color: var(--blue); font-size: .8rem; letter-spacing: .12em; font-weight: 650; margin-bottom: .7rem; text-transform: uppercase; }
+    .research { margin-top: 1.7rem; padding-top: 1.3rem; border-top: 1px solid var(--line); }
+    .research h2 { font-family: var(--body); font-size: .95rem; font-weight: 650; letter-spacing: 0; margin-bottom: .75rem; }
+    .topic-list { display: flex; flex-wrap: wrap; gap: .5rem .6rem; padding: 0; margin: 0; list-style: none; }
+    .topic-list li { padding: .2rem .7rem; font-size: .875rem; color: var(--blue); background: var(--wash); border-radius: 3px; line-height: 1.65; }
+    .content-section { padding-block: 2.9rem; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .65rem 1.2rem; margin-bottom: 1.5rem; }
+    .section-heading .aside-link { font-size: .875rem; }
+    .section-subtitle { margin: .6rem 0 0; color: var(--muted); font-size: .9rem; }
+    .news-list { list-style: none; padding: 0; margin: 0; }
+    .news-list li { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 1.2rem; padding: .65rem 0; }
+    .news-list time { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .news-list p { margin: 0; }
+    .new { display: inline-block; margin-right: .5rem; color: var(--blue); font-size: .75rem; font-weight: 750; letter-spacing: .055em; vertical-align: .08em; }
+    .pub-header { margin-bottom: 1.6rem; }
+    .pub-header .section-heading { margin-bottom: 0; }
+    .year-group { display: grid; grid-template-columns: 75px minmax(0,1fr); gap: 1.7rem; }
+    .year-group + .year-group { margin-top: .3rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+    .year-label { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; color: var(--muted); padding-top: .6rem; }
+    .paper { padding: .45rem 0 1.6rem; }
+    .paper + .paper { padding-top: 1.45rem; border-top: 1px solid var(--line); }
+    .paper-top { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin-bottom: .6rem; }
+    .venue-tag { display: inline-block; padding: .14rem .6rem; border-radius: 3px; font-size: .75rem; font-weight: 750; letter-spacing: .035em; color: var(--blue); background: #edf2fc; line-height: 1.65; }
+    .venue-tag.featured { background: var(--navy); color: #fff; }
+    .distinction { color: var(--gold); background: var(--gold-wash); border-radius: 3px; font-size: .75rem; padding: .14rem .55rem; line-height: 1.65; font-weight: 650; }
+    .paper-title { font-size: 1.13rem; font-weight: 650; line-height: 1.5; margin-bottom: .4rem; letter-spacing: -.012em; }
+    .paper-title a { color: var(--ink); }
+    .paper-title a:hover { color: var(--blue); }
+    .authors { font-size: .925rem; line-height: 1.75; color: var(--muted); margin-bottom: .25rem; }
+    .authors strong { color: var(--ink); }
+    .venue { font-size: .925rem; color: var(--muted); margin-bottom: .6rem; }
+    .paper-note { font-size: .95rem; margin-bottom: .6rem; }
+    .paper-links { display: flex; flex-wrap: wrap; gap: 1.05rem; font-size: .85rem; line-height: 1.7; }
+    .paper-links a { display: inline-flex; align-items: center; min-height: 30px; }
+    .dual-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4.2rem; }
+    .dual-section h2 { margin-bottom: 1.6rem; font-size: 1.9rem; }
+    .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 1px solid #ccd7e8; }
+    .timeline li { position: relative; padding: 0 0 1.7rem .45rem; }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li::before { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); border: 2px solid white; box-shadow: 0 0 0 1px #b8c8e0; left: -1.38rem; top: .5rem; }
+    .timeline h3 { margin-bottom: .25rem; font-size: 1rem; }
+    .timeline .institution { font-size: .925rem; margin-bottom: .2rem; }
+    .timeline .meta { color: var(--muted); font-size: .875rem; margin: 0; }
+    .honors-list { margin: 0; padding: 0; list-style: none; }
+    .honors-list li { display: grid; grid-template-columns: minmax(0,1fr) 3rem; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .honors-list li:first-child { padding-top: 0; }
+    .honors-list li:last-child { border-bottom: 0; }
+    .honors-list strong { display: block; font-size: .975rem; }
+    .honors-list small { display: block; color: var(--muted); font-size: .875rem; margin-top: .2rem; }
+    .honors-list time { color: var(--muted); font-size: .875rem; }
+    .contact-box { display: grid; grid-template-columns: 1fr auto; gap: 2.2rem; padding: 2rem 2.2rem; background: var(--wash); border-left: 3px solid var(--blue); align-items: center; }
+    .contact-box h2 { font-size: 1.85rem; margin-bottom: .7rem; }
+    .contact-box p { margin: 0; color: var(--muted); max-width: 42rem; font-size: .975rem; }
+    .contact-link { display: block; padding: .65rem 1rem; color: #fff; background: var(--navy); font-size: .9rem; border-radius: 3px; text-align: center; overflow-wrap: anywhere; }
+    .contact-link:hover { background: var(--blue); text-decoration: none; }
+    .site-footer { padding-block: 1.5rem 2rem; font-size: .8125rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 2rem; }
+    .site-footer p { margin: 0; }
+    @media (max-width: 980px) {
+      .wrap { width: min(100% - 3rem, 850px); }
+      .hero { grid-template-columns: 225px minmax(0,1fr); gap: 2.6rem; }
+      .site-nav { gap: 1rem; }
+      .wordmark span { display: none; }
+      .dual-section { gap: 2.5rem; }
+      .contact-box { grid-template-columns: 1fr; gap: 1.2rem; }
+      .contact-link { justify-self: start; }
+    }
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 2rem; }
+      .wrap { width: calc(100% - 2.4rem); }
+      .site-header { position: static; }
+      .header-inner { align-items: flex-start; flex-direction: column; gap: .55rem; padding-block: 1rem .8rem; }
+      .wordmark span { display: inline; }
+      .site-nav { column-gap: 1.15rem; row-gap: .1rem; }
+      .site-nav a { font-size: .875rem; padding-block: .25rem; }
+      .hero { grid-template-columns: 1fr; gap: 2.6rem; padding-block: 2.7rem 2.5rem; }
+      .profile { max-width: 25rem; margin-inline: auto; }
+      .portrait { width: 132px; height: 132px; font-size: 3rem; margin-bottom: 1rem; }
+      .affiliation { max-width: 22rem; }
+      .bio { font-size: 1rem; }
+      .content-section { padding-block: 2.3rem; }
+      h2 { font-size: 1.9rem; }
+      .news-list li { grid-template-columns: 67px minmax(0,1fr); gap: .8rem; }
+      .news-list time { font-size: .85rem; padding-top: .08rem; }
+      .year-group { grid-template-columns: 1fr; gap: .3rem; }
+      .year-label { margin-bottom: .5rem; padding-top: 0; }
+      .paper-title { font-size: 1.075rem; }
+      .dual-section { grid-template-columns: 1fr; gap: 2.8rem; }
+      .contact-box { padding: 1.5rem 1.2rem; }
+      .contact-box h2 { font-size: 1.65rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      body { font-size: 10pt; }
+      .wrap { width: 100%; }
+      .site-header, .skip-link { display: none; }
+      .hero { padding: 0 0 1.5rem; gap: 2rem; grid-template-columns: 180px minmax(0,1fr); }
+      .portrait { width: 100px; height: 100px; font-size: 2.5rem; print-color-adjust: exact; }
+      .content-section { padding-block: 1.5rem; }
+      .paper, .timeline li, .honors-list li { break-inside: avoid; }
+      .contact-box { padding: 1rem; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#about">Xuanting Xie <span lang="zh-CN">谢宣霆</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#about">Home</a>
+        <a href="#news" lang="zh-CN">News</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" id="about" aria-labelledby="about-heading">
+      <aside class="profile" aria-label="Profile">
+        <div class="portrait" aria-hidden="true">XX</div>
+        <p class="profile-name">Xuanting Xie</p>
+        <p class="name-cn" lang="zh-CN">谢宣霆</p>
+        <p class="role">Ph.D. Candidate</p>
+        <a class="affiliation" href="https://www.uestc.edu.cn/" target="_blank" rel="noopener noreferrer">University of Electronic Science<br>and Technology of China</a>
+        <p class="location">Chengdu, China</p>
+        <div class="profile-links">
+          <a href="https://scholar.google.com/citations?user=lb2XS0QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Scholar</a>
+          <a href="https://github.com/XieXuanting" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:x624361380@outlook.com">Email</a>
+        </div>
+      </aside>
+      <div>
+        <span class="focus-line">Graph learning &amp; language models</span>
+        <h1 id="about-heading">About me</h1>
+        <div class="bio">
+          <p>I am a Ph.D. candidate in Computer Science and Technology at the <strong>University of Electronic Science and Technology of China (UESTC)</strong>, advised by Prof. <a href="https://sites.google.com/site/zhaokanghomepage/" target="_blank" rel="noopener noreferrer">Zhao Kang</a> and Prof. Wenyu Chen.</p>
+          <p>My research focuses on <strong>graph representation learning</strong>, especially unsupervised graph clustering, homophily and heterophily, and spectral filtering. I am also interested in <strong>graph foundation models and large language models</strong>, with an emphasis on transferable representations and interpretable reasoning over graphs.</p>
+          <p>From 2025 to 2026, I was a CSC-supported visiting Ph.D. student at <strong>Singapore Management University</strong>, working with Prof. <a href="https://www.yfang.site/" target="_blank" rel="noopener noreferrer">Yuan Fang</a>. I received my B.Eng. in Software Engineering and M.Sc. in Computer Science and Technology from UESTC.</p>
+        </div>
+        <div class="research" id="research">
+          <h2>Research interests</h2>
+          <ul class="topic-list">
+            <li>Graph Clustering</li><li>Graph Neural Networks</li><li>Spectral Filtering</li><li>Homophily &amp; Heterophily</li><li>Graph Foundation Models</li><li>Graph–LLM Reasoning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="news" aria-labelledby="news-heading" lang="zh-CN">
+      <div class="section-heading"><h2 id="news-heading">News <span style="font-family:var(--body);font-size:.875rem;color:var(--muted);letter-spacing:0;margin-left:.6rem" lang="en">News</span></h2></div>
+      <ul class="news-list">
+        <li><time datetime="2026-08">2026.08</time><p><span class="new" lang="en">NEW</span>论文 <a href="#paper-agcn" lang="en">Attention Beyond Neighborhoods</a> 被 <strong lang="en">IEEE TCSVT</strong> 接收。</p></li>
+        <li><time datetime="2026">2026</time><p>论文 <a href="#paper-kcot" lang="en">Clustering as Reasoning</a> 被 <strong lang="en">ICML 2026</strong> 接收（CCF A）。</p></li>
+        <li><time datetime="2026">2026</time><p><a href="#paper-pfgc" lang="en">Provable Filter</a> 与 <a href="#paper-amlp" lang="en">Aggregation-aware MLP</a> 分别发表于 <strong lang="en">IEEE Transactions on Cybernetics</strong> 和 <strong lang="en">Pattern Recognition</strong>。</p></li>
+        <li><time datetime="2025">2025</time><p>获得<strong>腾讯奖学金·特等奖</strong>及<strong>博士生学术新秀</strong>荣誉。</p></li>
+        <li><time datetime="2025">2025</time><p>论文 <a href="#paper-fpgc" lang="en">One Node One Model</a> 被 <strong lang="en">AAAI 2025</strong> 接收，并入选 <strong lang="en">Oral</strong>（Top 4.7%）。</p></li>
+      </ul>
+    </section>
+
+    <section class="content-section" id="publications" aria-labelledby="publications-heading">
+      <div class="pub-header">
+        <div class="section-heading">
+          <h2 id="publications-heading">Selected publications</h2>
+          <a class="aside-link" href="https://scholar.google.com/citations?user=lb2XS0QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Full list on Google Scholar ↗</a>
+        </div>
+        <p class="section-subtitle"><strong>9 selected first-author papers</strong>, including shared first authorship and first student authorship.<br><span>† Equal contribution &nbsp; · &nbsp; ‡ First student author</span></p>
+      </div>
+
+      <div class="year-group">
+        <h3 class="year-label">2026</h3>
+        <div>
+          <article class="paper" id="paper-kcot">
+            <div class="paper-top"><span class="venue-tag featured">ICML 2026</span><span class="distinction">CCF A</span></div>
+            <h3 class="paper-title"><a href="https://arxiv.org/abs/2605.24867" target="_blank" rel="noopener noreferrer">Clustering as Reasoning: A <i>k</i>-Means Interpretation of Chain-of-Thought Graph Learning</a></h3>
+            <p class="authors"><strong>Xuanting Xie<sup>†</sup></strong>, Zhaochen Guo<sup>†</sup>, Bingheng Li<sup>†</sup>, Xingtong Yu, Zhifei Liao, Zhao Kang, Yuan Fang</p>
+            <p class="venue"><i>International Conference on Machine Learning (ICML)</i>, 2026.</p>
+            <p class="paper-note">Connecting graph reasoning with clustering through a <i>k</i>-means interpretation of Transformer operations.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2605.24867" target="_blank" rel="noopener noreferrer" aria-label="Clustering as Reasoning on arXiv">arXiv ↗</a><a href="https://openreview.net/forum?id=Zg9rjewo83" target="_blank" rel="noopener noreferrer" aria-label="Clustering as Reasoning on OpenReview">OpenReview ↗</a></div>
+          </article>
+
+          <article class="paper" id="paper-agcn">
+            <div class="paper-top"><span class="venue-tag">IEEE TCSVT 2026</span></div>
+            <h3 class="paper-title"><a href="https://arxiv.org/abs/2509.15024" target="_blank" rel="noopener noreferrer">Attention Beyond Neighborhoods: Reviving Transformer for Graph Clustering</a></h3>
+            <p class="authors"><strong>Xuanting Xie<sup>†</sup></strong>, Bingheng Li, Erlin Pan, Rui Hou, Wenyu Chen, Zhao Kang</p>
+            <p class="venue"><i>IEEE Transactions on Circuits and Systems for Video Technology</i>, 2026.</p>
+            <p class="paper-note">Integrating global attention with local graph structure for unsupervised graph clustering.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2509.15024" target="_blank" rel="noopener noreferrer" aria-label="Attention Beyond Neighborhoods on arXiv">arXiv ↗</a></div>
+          </article>
+
+          <article class="paper" id="paper-amlp">
+            <div class="paper-top"><span class="venue-tag">PATTERN RECOGNITION 2026</span></div>
+            <h3 class="paper-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320326008423" target="_blank" rel="noopener noreferrer">Aggregation-aware MLP: An Unsupervised Approach for Graph Message-passing</a></h3>
+            <p class="authors"><strong>Xuanting Xie</strong>, Bingheng Li, Erlin Pan, Xinyi Wang, Keren He, Wenyu Chen, Zhao Kang</p>
+            <p class="venue"><i>Pattern Recognition</i>, 179:113877, 2026.</p>
+            <div class="paper-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320326008423" target="_blank" rel="noopener noreferrer" aria-label="Aggregation-aware MLP publisher page">Paper ↗</a><a href="https://arxiv.org/abs/2507.20127" target="_blank" rel="noopener noreferrer" aria-label="Aggregation-aware MLP preprint">arXiv ↗</a></div>
+          </article>
+
+          <article class="paper" id="paper-pfgc">
+            <div class="paper-top"><span class="venue-tag">IEEE TCYB 2026</span></div>
+            <h3 class="paper-title"><a href="https://arxiv.org/abs/2403.03666" target="_blank" rel="noopener noreferrer">Provable Filter for Real-World Graph Clustering</a></h3>
+            <p class="authors"><strong>Xuanting Xie</strong>, Erlin Pan, Zhao Kang, Wenyu Chen, Bingheng Li</p>
+            <p class="venue"><i>IEEE Transactions on Cybernetics</i>, 2026.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2403.03666" target="_blank" rel="noopener noreferrer" aria-label="Provable Filter on arXiv">arXiv ↗</a><a href="https://github.com/XieXuanting/PFGC" target="_blank" rel="noopener noreferrer" aria-label="Provable Filter source code">Code ↗</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="year-group">
+        <h3 class="year-label">2025</h3>
+        <div>
+          <article class="paper" id="paper-fpgc">
+            <div class="paper-top"><span class="venue-tag featured">AAAI 2025</span><span class="distinction">CCF A · Oral · Top 4.7%</span></div>
+            <h3 class="paper-title"><a href="https://arxiv.org/abs/2412.09902" target="_blank" rel="noopener noreferrer">One Node One Model: Featuring the Missing-Half for Graph Clustering</a></h3>
+            <p class="authors"><strong>Xuanting Xie</strong>, Bingheng Li, Erlin Pan, Zhaochen Guo, Zhao Kang, Wenyu Chen</p>
+            <p class="venue"><i>Proceedings of the AAAI Conference on Artificial Intelligence</i>, 39(20):21688–21696, 2025.</p>
+            <p class="paper-note">Personalizing feature learning for individual nodes to recover information overlooked by structural aggregation.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2412.09902" target="_blank" rel="noopener noreferrer" aria-label="One Node One Model on arXiv">arXiv ↗</a></div>
+          </article>
+
+          <article class="paper" id="paper-rgsl">
+            <div class="paper-top"><span class="venue-tag">NEURAL NETWORKS 2025</span></div>
+            <h3 class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0893608025000851" target="_blank" rel="noopener noreferrer">Robust Graph Structure Learning under Heterophily</a></h3>
+            <p class="authors"><strong>Xuanting Xie</strong>, Wenyu Chen, Zhao Kang</p>
+            <p class="venue"><i>Neural Networks</i>, 185:107206, 2025.</p>
+            <div class="paper-links"><a href="https://www.sciencedirect.com/science/article/pii/S0893608025000851" target="_blank" rel="noopener noreferrer" aria-label="Robust Graph Structure Learning publisher page">Paper ↗</a><a href="https://arxiv.org/abs/2403.03659" target="_blank" rel="noopener noreferrer" aria-label="Robust Graph Structure Learning preprint">arXiv ↗</a></div>
+          </article>
+
+          <article class="paper" id="paper-spcnet">
+            <div class="paper-top"><span class="venue-tag">NEURAL NETWORKS 2025</span></div>
+            <h3 class="paper-title"><a href="https://arxiv.org/abs/2403.03676" target="_blank" rel="noopener noreferrer">Simplified PCNet with Robustness</a></h3>
+            <p class="authors">Bingheng Li<sup>†</sup>, <strong>Xuanting Xie<sup>†</sup></strong>, Haoxiang Lei, Ruiyi Fang, Zhao Kang</p>
+            <p class="venue"><i>Neural Networks</i>, 184:107099, 2025.</p>
+            <div class="paper-links"><a href="https://arxiv.org/abs/2403.03676" target="_blank" rel="noopener noreferrer" aria-label="Simplified PCNet on arXiv">arXiv ↗</a><a href="https://doi.org/10.1016/j.neunet.2024.107099" target="_blank" rel="noopener noreferrer" aria-label="Simplified PCNet DOI">DOI ↗</a></div>
+          </article>
+
+          <article class="paper" id="paper-cdc">
+            <div class="paper-top"><span class="venue-tag">IEEE TNNLS 2025</span></div>
+            <h3 class="paper-title">CDC: A Simple Framework for Complex Data Clustering</h3>
+            <p class="authors">Zhao Kang, <strong>Xuanting Xie<sup>‡</sup></strong>, Bingheng Li, Erlin Pan</p>
+            <p class="venue"><i>IEEE Transactions on Neural Networks and Learning Systems</i>, 36(7):13177–13188, 2025.</p>
+            <div class="paper-links"><a href="https://scholar.google.com/scholar?q=CDC%3A+A+Simple+Framework+for+Complex+Data+Clustering" target="_blank" rel="noopener noreferrer" aria-label="Find CDC on Google Scholar">Google Scholar ↗</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="year-group">
+        <h3 class="year-label">2023</h3>
+        <div>
+          <article class="paper" id="paper-cgcaf">
+            <div class="paper-top"><span class="venue-tag">ESWA 2023</span></div>
+            <h3 class="paper-title"><a href="https://doi.org/10.1016/j.eswa.2023.119645" target="_blank" rel="noopener noreferrer">Contrastive Graph Clustering with Adaptive Filter</a></h3>
+            <p class="authors"><strong>Xuanting Xie</strong>, Wenyu Chen, Zhao Kang, Chong Peng</p>
+            <p class="venue"><i>Expert Systems with Applications</i>, 219:119645, 2023.</p>
+            <div class="paper-links"><a href="https://doi.org/10.1016/j.eswa.2023.119645" target="_blank" rel="noopener noreferrer" aria-label="Contrastive Graph Clustering with Adaptive Filter DOI">Paper ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section dual-section" id="experience" aria-labelledby="experience-heading">
+      <div>
+        <h2 id="experience-heading">Education &amp; experience</h2>
+        <ol class="timeline">
+          <li><h3>Ph.D. in Computer Science and Technology</h3><p class="institution">University of Electronic Science and Technology of China</p><p class="meta">Sep. 2023 – Present · Chengdu, China</p><p class="meta">Advisors: Zhao Kang and Wenyu Chen</p></li>
+          <li><h3>Visiting Ph.D. Student · CSC</h3><p class="institution">Singapore Management University</p><p class="meta">Aug. 2025 – Aug. 2026 · Singapore</p><p class="meta">Host: Yuan Fang</p></li>
+          <li><h3>M.Sc. in Computer Science and Technology</h3><p class="institution">University of Electronic Science and Technology of China</p><p class="meta">Sep. 2021 – Jul. 2023 · Chengdu, China</p></li>
+          <li><h3>B.Eng. in Software Engineering</h3><p class="institution">University of Electronic Science and Technology of China</p><p class="meta">Sep. 2017 – Jul. 2021 · Chengdu, China</p></li>
+        </ol>
+      </div>
+      <div>
+        <h2 id="honors-heading">Selected honors</h2>
+        <ul class="honors-list" aria-labelledby="honors-heading">
+          <li><div><strong lang="zh-CN">腾讯奖学金 · 特等奖</strong><small>Tencent Special Scholarship</small></div><time datetime="2025">2025</time></li>
+          <li><div><strong lang="zh-CN">博士生学术新秀</strong><small>University of Electronic Science and Technology of China</small></div><time datetime="2025">2025</time></li>
+          <li><div><strong>AAAI 2025 Oral Presentation</strong><small>One Node One Model · Top 4.7%</small></div><time datetime="2025">2025</time></li>
+          <li><div><strong lang="zh-CN">研究生学术青苗奖</strong><small>University of Electronic Science and Technology of China</small></div><time datetime="2023">2023</time></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-box">
+        <div><h2 id="contact-heading">Research collaboration</h2><p>I welcome discussions and collaborations on graph learning, unsupervised learning, graph foundation models, and LLM reasoning. Feel free to get in touch.</p></div>
+        <a class="contact-link" href="mailto:x624361380@outlook.com">x624361380@outlook.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <p>© 2026 Xuanting Xie <span lang="zh-CN">· 谢宣霆</span></p>
+    <p>Last updated: September 2026 <span aria-hidden="true">&nbsp; · &nbsp;</span><a href="#about">Back to top ↑</a></p>
+  </footer>
+</body>
+</html>
